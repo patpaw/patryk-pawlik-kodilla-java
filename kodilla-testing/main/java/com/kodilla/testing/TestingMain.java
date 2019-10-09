@@ -15,10 +15,10 @@ public class TestingMain {
             System.out.println("Error!");
         }
 
-        Calculator calculator = new Calculator(15, 10);
+        Calculator calculator = new Calculator();
 
-        int resultAdd = calculator.addAToB();
-        int resultSubtract = calculator.subtractBFromA();
+        int resultAdd = calculator.addAToB(15,10);
+        int resultSubtract = calculator.subtractBFromA(15,10);
 
         if (resultAdd.equals(25)) {
             System.out.println("Test ok");
