@@ -15,21 +15,21 @@ public class TestingMain {
             System.out.println("Error!");
         }
 
-        Calculator calculator = new Calculator();
+        Calculator calculator = new Calculator(15,10);
 
-        int resultAdd = calculator.addAToB(15,10);
-        int resultSubtract = calculator.subtractBFromA(15,10);
+        int resultAdd = calculator.addAToB();
+        int resultSubtract = calculator.subtractBFromA();
 
-        if (resultAdd.equals(25)) {
+        if (resultAdd == 25) {
             System.out.println("Test ok");
         } else {
-            System.out.println("Erro!");
+            System.out.println("Error!");
         }
 
-        if (resultSubtract.equals(5)) {
+        if (resultSubtract == 5) {
             System.out.println("Test ok");
         } else {
-            System.out.println("Erro!");
+            System.out.println("Error!");
 
         }
     }
