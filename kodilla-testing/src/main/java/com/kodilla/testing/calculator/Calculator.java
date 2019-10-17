@@ -10,18 +10,22 @@ public class Calculator {
     }
 
     public int getA() {
+
         return a;
     }
 
     public int getB() {
+
         return b;
     }
 
     public int addAToB() {
+
         return a + b;
     }
 
     public int subtractBFromA() {
+
         return a - b;
     }
 
