@@ -24,6 +24,15 @@ public class LibraryUser {
     }
 
     @Override
+    public String toString() {
+        return "LibraryUser{" +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", peselId='" + peselId + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
