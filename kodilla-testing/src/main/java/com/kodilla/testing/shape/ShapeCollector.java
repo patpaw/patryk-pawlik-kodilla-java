@@ -7,7 +7,6 @@ public class ShapeCollector {
 
     public void addFigure(Shape shape) {
         figures.add(shape);
-
     }
 
     public void removeFigure(Shape shape) {

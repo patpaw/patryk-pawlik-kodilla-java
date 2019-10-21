@@ -14,8 +14,8 @@ public class ForumStatisticsTest {
         when(statistics.postsCount()).thenReturn(0);
         stats.calculateAdvStatistics(statistics);
 
-        int postCount = stats.getPostsCount();
-        Assert.assertEquals(0, postCount);
+        int postsCount = stats.getPostsCount();
+        Assert.assertEquals(0, postsCount);
     }
 
     @Test
@@ -25,8 +25,66 @@ public class ForumStatisticsTest {
         when(statistics.postsCount()).thenReturn(1000);
         stats.calculateAdvStatistics(statistics);
 
-        int postCount = stats.getPostsCount();
-        Assert.assertEquals(1000, postCount);
+        int postsCount = stats.getPostsCount();
+        Assert.assertEquals(1000, postsCount);
     }
 
+    @Test
+    public void calculateStatisticsWhenComentsCountEquals0() {
+        Stats stats = new Stats();
+        Statistics statistics = mock(Statistics.class);
+        when(statistics.commentsCount()).thenReturn(0);
+        stats.calculateAdvStatistics(statistics);
+
+        int comentsCount = stats.getCommentsCount();
+        Assert.assertEquals(0, comentsCount);
+    }
+
+    @Test
+    public void calculateStatisticsWhenComentsCountIsSmallerThanPostsCount() {
+        Stats stats = new Stats();
+        Statistics statistics = mock(Statistics.class);
+        when(statistics.commentsCount()).thenReturn(5);
+        when(statistics.postsCount()).thenReturn(7);
+        stats.calculateAdvStatistics(statistics);
+
+        int comentsCount = stats.getCommentsCount();
+        int postsCount = stats.getPostsCount();
+        Assert.assertEquals(true, comentsCount < postsCount);
+    }
+
+    @Test
+    public void calculateStatisticsWhenComentsCountIsBiggerrThanPostsCount() {
+        Stats stats = new Stats();
+        Statistics statistics = mock(Statistics.class);
+        when(statistics.commentsCount()).thenReturn(7);
+        when(statistics.postsCount()).thenReturn(5);
+        stats.calculateAdvStatistics(statistics);
+
+        int comentsCount = stats.getCommentsCount();
+        int postsCount = stats.getPostsCount();
+        Assert.assertEquals(true, comentsCount > postsCount);
+    }
+
+    @Test
+    public void calculateStatisticsWhenUsersCountEquals0() {
+        Stats stats = new Stats();
+        Statistics statistics = mock(Statistics.class);
+        when(statistics.usersNames().size()).thenReturn(0);
+        stats.calculateAdvStatistics(statistics);
+
+        int usersCount = stats.getUsersCount();
+        Assert.assertEquals(0, usersCount);
+    }
+
+    @Test
+    public void calculateStatisticsWhenUsersCountEquals100() {
+        Stats stats = new Stats();
+        Statistics statistics = mock(Statistics.class);
+        when(statistics.usersNames().size()).thenReturn(100);
+        stats.calculateAdvStatistics(statistics);
+
+        int usersCount = stats.getUsersCount();
+        Assert.assertEquals(100, usersCount);
+    }
 }
