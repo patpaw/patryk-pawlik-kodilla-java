@@ -12,9 +12,15 @@ import static org.mockito.Mockito.when;
 public class ForumStatisticsTest {
     @Test
     public void calculateStatisticsWhenPostsCountEquals0() {
+        List<String> usersNames = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            usersNames.add(i,"Jan");
+        }
         Stats stats = new Stats();
         Statistics statistics = mock(Statistics.class);
         when(statistics.postsCount()).thenReturn(0);
+        when(statistics.commentsCount()).thenReturn(0);
+        when(statistics.usersNames()).thenReturn(usersNames);
         stats.calculateAdvStatistics(statistics);
 
         int postsCount = stats.getPostsCount();
@@ -23,9 +29,15 @@ public class ForumStatisticsTest {
 
     @Test
     public void calculateStatisticsWhenPostsCountEquals1000() {
+        List<String> usersNames = new ArrayList<>();
+        for (int i = 0; i < 300; i++) {
+            usersNames.add(i,"Jan");
+        }
         Stats stats = new Stats();
         Statistics statistics = mock(Statistics.class);
         when(statistics.postsCount()).thenReturn(1000);
+        when(statistics.commentsCount()).thenReturn(5300);
+        when(statistics.usersNames()).thenReturn(usersNames);
         stats.calculateAdvStatistics(statistics);
 
         int postsCount = stats.getPostsCount();
@@ -34,9 +46,15 @@ public class ForumStatisticsTest {
 
     @Test
     public void calculateStatisticsWhenComentsCountEquals0() {
+        List<String> usersNames = new ArrayList<>();
+        for (int i = 0; i < 50; i++) {
+            usersNames.add(i,"Jan");
+        }
         Stats stats = new Stats();
         Statistics statistics = mock(Statistics.class);
+        when(statistics.postsCount()).thenReturn(100);
         when(statistics.commentsCount()).thenReturn(0);
+        when(statistics.usersNames()).thenReturn(usersNames);
         stats.calculateAdvStatistics(statistics);
 
         int comentsCount = stats.getCommentsCount();
@@ -45,10 +63,15 @@ public class ForumStatisticsTest {
 
     @Test
     public void calculateStatisticsWhenComentsCountIsSmallerThanPostsCount() {
+        List<String> usersNames = new ArrayList<>();
+        for (int i = 0; i < 120; i++) {
+            usersNames.add(i,"Jan");
+        }
         Stats stats = new Stats();
         Statistics statistics = mock(Statistics.class);
-        when(statistics.commentsCount()).thenReturn(5);
-        when(statistics.postsCount()).thenReturn(7);
+        when(statistics.commentsCount()).thenReturn(521);
+        when(statistics.postsCount()).thenReturn(753);
+        when(statistics.usersNames()).thenReturn(usersNames);
         stats.calculateAdvStatistics(statistics);
 
         int comentsCount = stats.getCommentsCount();
@@ -58,10 +81,15 @@ public class ForumStatisticsTest {
 
     @Test
     public void calculateStatisticsWhenComentsCountIsBiggerrThanPostsCount() {
+        List<String> usersNames = new ArrayList<>();
+        for (int i = 0; i < 300; i++) {
+            usersNames.add(i,"Jan");
+        }
         Stats stats = new Stats();
         Statistics statistics = mock(Statistics.class);
-        when(statistics.commentsCount()).thenReturn(7);
-        when(statistics.postsCount()).thenReturn(5);
+        when(statistics.commentsCount()).thenReturn(953);
+        when(statistics.postsCount()).thenReturn(452);
+        when(statistics.usersNames()).thenReturn(usersNames);
         stats.calculateAdvStatistics(statistics);
 
         int comentsCount = stats.getCommentsCount();
@@ -77,6 +105,8 @@ public class ForumStatisticsTest {
             }
         Stats stats = new Stats();
         Statistics statistics = mock(Statistics.class);
+        when(statistics.postsCount()).thenReturn(70);
+        when(statistics.commentsCount()).thenReturn(150);
         when(statistics.usersNames()).thenReturn(usersNames);
         stats.calculateAdvStatistics(statistics);
 
@@ -89,6 +119,8 @@ public class ForumStatisticsTest {
         List<String> usersNames = new ArrayList<>();
         Stats stats = new Stats();
         Statistics statistics = mock(Statistics.class);
+        when(statistics.postsCount()).thenReturn(0);
+        when(statistics.commentsCount()).thenReturn(0);
         when(statistics.usersNames()).thenReturn(usersNames);
         stats.calculateAdvStatistics(statistics);
 

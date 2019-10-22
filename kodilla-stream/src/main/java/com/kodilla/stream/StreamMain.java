@@ -1,6 +1,6 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.beautifier.PoemBeautifier;
+//import com.kodilla.stream.beautifier.PoemBeautifier;
 import com.kodilla.stream.book.Book;
 import com.kodilla.stream.book.BookDirectory;
 import java.util.List;
