@@ -89,31 +89,30 @@ public class BookDirectoryTestSuite {
 
     @Test
     public void testListBooksInHandsOf() {
-        public static String myUser1;
-        public static String myUser2;
-        public static String myUser3;
         //Given
+        LibraryUser libraryUser1 = new LibraryUser("Jan", "Kowal", "525645");
+        LibraryUser libraryUser2 = new LibraryUser("Piotr", "Krzak", "455546554");
+        LibraryUser libraryUser3 = new LibraryUser("Kacper", "Pas", "45456455");
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
         List<Book> resultListOf0Books = new ArrayList<Book>();
         List<Book> resultListOf1Books = generateListOfNBooks(1);
         List<Book> resultListOf5Books = generateListOfNBooks(5);
-        when(libraryDatabaseMock.listBooksInHandsOf(myUser1))
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser1))
                 .thenReturn(resultListOf0Books);
-        when(libraryDatabaseMock.listBooksInHandsOf(myUser2))
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser2))
                 .thenReturn(resultListOf1Books);
-        when(libraryDatabaseMock.listBooksInHandsOf(myUser3))
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser3))
                 .thenReturn(resultListOf5Books);
 
         //When
-        List<Book> theListOfBooks0 = bookLibrary.listBooksInHandsOf(myUser1);
-        List<Book> theListOfBooks1 = bookLibrary.listBooksInHandsOf(myUser2);
-        List<Book> theListOfBooks5 = bookLibrary.listBooksInHandsOf(myUser3);
+        List<Book> theListOfBooks0 = bookLibrary.listBooksInHandsOf(libraryUser1);
+        List<Book> theListOfBooks1 = bookLibrary.listBooksInHandsOf(libraryUser2);
+        List<Book> theListOfBooks5 = bookLibrary.listBooksInHandsOf(libraryUser3);
 
         //Then
         assertEquals(0, theListOfBooks0.size());
         assertEquals(1, theListOfBooks1.size());
         assertEquals(5, theListOfBooks5.size());
-
     }
 }
