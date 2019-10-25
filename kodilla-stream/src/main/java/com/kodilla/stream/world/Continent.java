@@ -4,31 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Continent {
-    private final String continent;
+    private final String continentName;
 
-    public Continent(String continent) {
-        this.continent = continent;
+    private final List<Country> countries = new ArrayList<>();
+
+    public Continent(final String continentName) {
+        this.continentName = continentName;
     }
 
-    List<Country> europeList = new ArrayList<>();
-    List<Country> asiaList = new ArrayList<>();
-    List<Country> africaList = new ArrayList<>();
-    europeList.add(new Country("Polska"));
-    europeList.add(new Country("Niemcy"));
-    europeList.add(new Country("Czechy"));
-    europeList.add(new Country("Słowacja"));
+    public final String getContinentName() {
+        return continentName;
+    }
 
-    asiaList.add(new Country("Chiny"));
-    asiaList.add(new Country("Indie"));
-    asiaList.add(new Country("Tajlandia"));
-    asiaList.add(new Country("Korea Północna"));
+    public final List<Country> getCountries() {
+        return countries;
+    }
 
-    africaList.add(new Country("Algieria"));
-    africaList.add(new Country("Benin"));
-    africaList.add(new Country("Botswana"));
-    africaList.add(new Country("Angola"));
-
-
-
-
+    public void addCountry(Country country) {
+        countries.add(country);
+    }
 }
