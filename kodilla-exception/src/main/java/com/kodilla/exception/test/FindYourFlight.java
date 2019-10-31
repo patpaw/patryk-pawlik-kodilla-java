@@ -1,18 +1,19 @@
 package com.kodilla.exception.test;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class FindYourFlight {
-    private String airportName;
-    private Boolean isAirportAvalible;
 
-    public HashMap findFlight(Flight flight) {
+    public boolean findFlight(Flight flight) throws RouteNotFoundException {
         HashMap<String, Boolean> flights = new HashMap<>();
         flights.put("Balice", true);
         flights.put("Pyrzowice", false);
         flights.put("Chopina", true);
 
-        return flights;
+        if(flights.containsKey(flight.getArrivalAirport())) {
+            return flights.get(flight.getArrivalAirport());
+        } else {
+            throw new RouteNotFoundException();
+        }
     }
 }
